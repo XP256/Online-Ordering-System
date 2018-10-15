@@ -1,0 +1,11 @@
+com\imooc\sell\LoggerTest.class
+com\imooc\sell\SellApplicationTests.class
+com\imooc\sell\repository\ProductCategoryRepositoryTest.class
+com\imooc\sell\repository\ProductInfoRepositoryTest.class
+com\imooc\sell\repository\SellerInfoRepositoryTest.class
+com\imooc\sell\service\impl\OrderServiceImplTest.class
+com\imooc\sell\dataobject\mapper\ProductCategoryMapperTest.class
+com\imooc\sell\repository\OrderMasterRepositoryTest.class
+com\imooc\sell\service\impl\ProductServiceImplTest.class
+com\imooc\sell\repository\OrderDetailRepositoryTest.class
+com\imooc\sell\service\impl\CategoryServiceImplTest.class
