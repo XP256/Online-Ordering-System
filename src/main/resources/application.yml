@@ -42,3 +42,6 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
 
 
+queries:
+  users-query: select email, password, active from user_info where email=?
+  roles-query: select email, role from user_info where email=?

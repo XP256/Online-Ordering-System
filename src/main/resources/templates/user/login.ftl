@@ -16,7 +16,7 @@
         </div>
         </#if>
 
-        <form action="/login" method="post">
+        <form action="/sell/login" method="post">
             <div class="form-group">
                 <label>Email address</label>
                 <input type="text" class="form-control form-control-lg" id="email" name="email" placeholder="Enter email" required="true" autofocus="true">
@@ -31,7 +31,7 @@
                 <div>
                     <input type="checkbox" id="remember_me" name="remember-me">
                     <label for="remember_me" class="inline">Remember me</label>
-                    <a class="float-right" href="/register">Sign Up</a>
+                    <a class="float-right" href="/sell/register">Sign Up</a>
                 </div>
             </div>
 
