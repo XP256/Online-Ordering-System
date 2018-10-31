@@ -1,12 +1,14 @@
 package com.imooc.sell.controller;
 
 
+import com.imooc.sell.dataobject.UserInfo;
 import com.imooc.sell.dto.CartDTO;
 import com.imooc.sell.dto.Item;
 import com.imooc.sell.dto.OrderDTO;
 import com.imooc.sell.enums.ResultEnum;
 import com.imooc.sell.exception.SellException;
 import com.imooc.sell.service.CartService;
+import com.imooc.sell.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -27,8 +29,8 @@ public class BuyerCartController {
 
     @Autowired
     CartService cartService;
-//    @Autowired
-//    UserService userService;
+    @Autowired
+    UserService userService;
 
     @GetMapping("/list")
     public ModelAndView findAll(Map<String, Object> map){
@@ -67,15 +69,15 @@ public class BuyerCartController {
         return new ModelAndView("common/success",map);
     }
 
-//    @PostMapping("/checkout")
-//    public  String checkout(Model model, Principal principal) {
-//        User user = userService.findOne(principal.getName());// Email as username
-//        cartService.checkout(user);
-//
-//        model.addAttribute("msg", ResultEnum.CART_CHECKOUT_SUCCESS.getMessage());
-//        model.addAttribute("url", "/order");
-//        return "/common/success";
-//    }
+    @PostMapping("/checkout")
+    public  String checkout(Model model, Principal principal) {
+        UserInfo user = userService.findOne(principal.getName());// Email as username
+        cartService.checkout(user);
+
+        model.addAttribute("msg", ResultEnum.CART_CHECKOUT_SUCCESS.getMessage());
+        model.addAttribute("url", "/sell/buyer/order");
+        return "/common/success";
+    }
 
     @GetMapping("/remove")
     public ModelAndView remove(@RequestParam("product_id") String productId,

@@ -47,13 +47,27 @@ public class UserController {
     @Autowired
     UserInfoRepository userInfoRepository;
 
-
+    /**
+     *@Description: login
+     *@Param: [map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:14
+     */
     @GetMapping("/login")
     public ModelAndView login(Map<String, Object> map) {
         return new ModelAndView("/user/login",map);
     }
 
-
+    /**
+     *@Description: Handler
+     *@Param: [authentication]
+     *@return: java.lang.String
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:15
+     */
     @GetMapping("/home")
     public String Handler(Authentication authentication) {
         if (authentication == null || authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_CUSTOMER"))) {
@@ -70,11 +84,28 @@ public class UserController {
 //
 //        return "user/register";
 //    }
+    
+    /**
+     *@Description: showForm
+     *@Param: [map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:15
+     */
     @GetMapping("/register")
     public ModelAndView showForm(Map<String, Object> map) {
         return new ModelAndView("/user/register",map);
     }
 
+    /**
+     *@Description: register
+     *@Param: [user, bindingResult, redirectAttributes]
+     *@return: java.lang.String
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:15
+     */
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("user") UserInfo user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
@@ -96,11 +127,27 @@ public class UserController {
         return "redirect:" + "/login";
     }
 
+    /**
+     *@Description: showUser
+     *@Param: [user]
+     *@return: java.lang.String
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:15
+     */
     @GetMapping("/profiles")
     public String showUser(UserInfo user) {
         return "/user/show";
     }
 
+    /**
+     *@Description: editUser
+     *@Param: [user, bindingResult, redirectAttributes, principal, model]
+     *@return: java.lang.String
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:15
+     */
     @PostMapping("/profiles")
     public String editUser(@Valid @ModelAttribute("user") UserInfo user, BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal, Model model) {
         // 使用BindingResult来验证表单数据的正确性
@@ -114,16 +161,34 @@ public class UserController {
             return "redirect:" + "/403";
         }
         userService.update(user);
-        model.addAttribute("msg", "Profils is updated!");
-        model.addAttribute("url", "/profiles");
+        model.addAttribute("msg", "Profiles is updated!");
+        model.addAttribute("url", "/sell/profiles");
         return "common/success";
     }
 
+    
+   /**
+    *@Description: accessDeney
+    *@Param: [model]
+    *@return: java.lang.String
+    *@Author: XINPENG ZHU
+    *@Date: 2018/10/31
+    *@Time: 13:15
+    */ 
     @GetMapping("/403")
     public String accessDeney(Model model) {
         model.addAttribute("msg", "Access denied!");
         return "/common/error";
     }
+    
+    /**
+     *@Description: notFound
+     *@Param: [model]
+     *@return: java.lang.String
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:23
+     */
     @GetMapping("/404")
     public String notFound(Model model) {
         model.addAttribute("msg", "Page not found!");

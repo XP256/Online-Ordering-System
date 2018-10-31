@@ -22,16 +22,40 @@ public class UserServiceImpl implements UserService {
     private MyPasswordEncoder passwordEncoder;
     @Autowired
     UserInfoRepository userInfoRepository;
+    /**
+     *@Description: findOne
+     *@Param: [email]
+     *@return: com.imooc.sell.dataobject.UserInfo
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:20
+     */
     @Override
     public UserInfo findOne(String email) {
         return userInfoRepository.findByEmail(email);
     }
 
+    /**
+     *@Description: findByRole
+     *@Param: [role]
+     *@return: java.util.Collection<com.imooc.sell.dataobject.UserInfo>
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:20
+     */
     @Override
     public Collection<UserInfo> findByRole(String role) {
         return userInfoRepository.findAllByRole(role);
     }
 
+    /**
+     *@Description: save
+     *@Param: [user]
+     *@return: void
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:16
+     */
     @Override
     @Transactional
     public void save(UserInfo user) {
@@ -46,6 +70,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     *@Description: update
+     *@Param: [user]
+     *@return: void
+     *@Author: XINPENG ZHU
+     *@Date: 2018/10/31
+     *@Time: 13:16
+     */
     @Override
     public void update(UserInfo user) {
         UserInfo oldUser = userInfoRepository.findByEmail(user.getEmail());

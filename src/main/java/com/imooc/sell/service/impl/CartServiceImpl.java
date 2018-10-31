@@ -1,6 +1,7 @@
 package com.imooc.sell.service.impl;
 
 import com.imooc.sell.dataobject.ProductInfo;
+import com.imooc.sell.dataobject.UserInfo;
 import com.imooc.sell.dto.CartDTO;
 import com.imooc.sell.dto.Item;
 import com.imooc.sell.enums.ProductStatusEnum;
@@ -70,21 +71,21 @@ public class CartServiceImpl implements CartService {
         return map.values();
     }
 
-//    @Override
-//    @Transactional
-//    public void checkout(User user) {
-//        OrderMain orderMain = new OrderMain(user);
-//        for (String productId : map.keySet()) {
-//            Item item = map.get(productId);
-//            ProductInOrder productInOrder = new ProductInOrder(item.getProductInfo(), item.getQuantity());
-//            productInOrder.setOrderMain(orderMain);
-//            orderMain.getProducts().add(productInOrder);
-//            productService.decreaseStock(productId, item.getQuantity());
-//        }
-//        orderMain.setOrderAmount(getTotal());
-//        orderRepository.save(orderMain);
-//        map.clear();
-//    }
+    @Override
+    @Transactional
+    public void checkout(UserInfo user) {
+        OrderMain orderMain = new OrderMain(user);
+        for (String productId : map.keySet()) {
+            Item item = map.get(productId);
+            ProductInOrder productInOrder = new ProductInOrder(item.getProductInfo(), item.getQuantity());
+            productInOrder.setOrderMain(orderMain);
+            orderMain.getProducts().add(productInOrder);
+            productService.decreaseStock(productId, item.getQuantity());
+        }
+        orderMain.setOrderAmount(getTotal());
+        orderRepository.save(orderMain);
+        map.clear();
+    }
 
     @Override
     public BigDecimal getTotal() {

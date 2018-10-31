@@ -49,6 +49,8 @@ public enum ResultEnum {
 
     VALID_ERROR(28,"VALID ERROR!"),
 
+    CART_CHECKOUT_SUCCESS(29,"CHECKOUT SUCCESSFULLY!"),
+
     ;
 
 
