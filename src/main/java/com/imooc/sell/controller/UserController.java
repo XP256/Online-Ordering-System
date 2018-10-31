@@ -4,6 +4,8 @@ package com.imooc.sell.controller;
 import com.imooc.sell.dataobject.UserInfo;
 import com.imooc.sell.repository.UserInfoRepository;
 import com.imooc.sell.service.UserService;
+import com.imooc.sell.utils.KeyUtil;
+import com.sun.org.apache.xml.internal.security.keys.KeyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -70,12 +72,13 @@ public class UserController {
 //    }
     @GetMapping("/register")
     public ModelAndView showForm(Map<String, Object> map) {
-
         return new ModelAndView("/user/register",map);
     }
 
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("user") UserInfo user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+        user.setId(KeyUtil.getUniqueKey());
         UserInfo userWithEnteredEmailExists = userService.findOne(user.getEmail());
         if (userWithEnteredEmailExists != null) {
             bindingResult
@@ -87,7 +90,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             // 将提交的表单内容原封不动的返回到页面再展示出来
             redirectAttributes.addFlashAttribute("user", user);
-            return "register";
+            return "/user/register";
         }
         userService.save(user);
         return "redirect:" + "/login";

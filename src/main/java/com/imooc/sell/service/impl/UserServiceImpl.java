@@ -35,7 +35,9 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void save(UserInfo user) {
+//        System.out.println(passwordEncoder.encode(user.getPassword()));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
 //        user.setPassword(user.getPassword());
         try {
             userInfoRepository.save(user);
