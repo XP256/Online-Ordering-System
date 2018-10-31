@@ -31,7 +31,7 @@
                 <div>
                     <input type="checkbox" id="remember_me" name="remember-me">
                     <label for="remember_me" class="inline">Remember me</label>
-                    <a class="float-right" href="/register">Sign Up</a>
+                    <a class="float-right" href="/sell/register">Sign Up</a>
                 </div>
             </div>
 

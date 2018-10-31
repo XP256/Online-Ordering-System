@@ -99,16 +99,39 @@ INSERT INTO order_detail(detail_id,order_id,product_id,product_name,product_pric
 
 
 
-create table seller_info(
-	seller_id varchar(32) not null,
-    username varchar(32) not null,
-    password varchar(32) not null,
-    openid varchar(64) not null comment 'OpenId',
+#create table seller_info(
+#	seller_id varchar(32) not null,
+#    username varchar(32) not null,
+#    password varchar(32) not null,
+#    openid varchar(64) not null comment 'OpenId',
+#    create_time timestamp default current_timestamp comment 'Create Time',
+#    update_time timestamp default current_timestamp on update current_timestamp comment 'Update Time',
+#    primary key (seller_id)
+#)comment 'Seller Info';
+
+
+
+
+
+drop table user_info;
+create table user_info(
+	id varchar(32) not null,
+    active boolean not null comment 'Active',
+    address varchar(128) not null comment 'Address',
+    email varchar(64) not null comment 'Email',
+    name varchar(64) not null comment 'Name',
+    password varchar(64) not null comment 'Password',
+    phone varchar(64) not null comment 'Phone',
+    role varchar(64) not null comment 'Role',
     create_time timestamp default current_timestamp comment 'Create Time',
     update_time timestamp default current_timestamp on update current_timestamp comment 'Update Time',
-    primary key (seller_id)
-)comment 'Seller Info';
+    primary key(id)
+)comment 'User';
 
+INSERT INTO user_info(id,active,address,email,name,password,phone,role) VALUES (2147483641, true, '3200 West Road', 'customer1@email.com', 'customer1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', '123456789', 'ROLE_CUSTOMER');
+INSERT INTO user_info(id,active,address,email,name,password,phone,role) VALUES (2147483642, true, '2000 John Road', 'manager1@email.com', 'manager1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', '987654321', 'ROLE_MANAGER');
+INSERT INTO user_info(id,active,address,email,name,password,phone,role) VALUES (2147483643, true, '222 East Drive ', 'employee1@email.com', 'employee1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', '123123122', 'ROLE_EMPLOYEE');
+INSERT INTO user_info(id,active,address,email,name,password,phone,role) VALUES (2147483645, true, '3100 Western Road A', 'customer2@email.com', 'customer2', '$2a$10$0oho5eUbDqKrLH026A2YXuCGnpq07xJpuG/Qu.PYb1VCvi2VMXWNi', '2343456', 'ROLE_CUSTOMER');
 
 
 

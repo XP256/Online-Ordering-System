@@ -37,21 +37,21 @@
                 </a>
             </#if>
             <#if currentUser?? >
-                <a class="nav-item nav-link " href="/order">
+                <a class="nav-item nav-link " href="/sell/order">
                     <i class="fa fa-list-ul"></i>
                     Orders
                 </a>
-                <a class="nav-item nav-link " href="/profiles">
+                <a class="nav-item nav-link " href="/sell/profiles">
                     ${currentUser.name}
                 </a>
-                <a class="nav-item nav-link " href="/logout">
+                <a class="nav-item nav-link " href="/sell/logout">
                     Sign Out
                 </a>
             <#else>
                 <a class="nav-item nav-link " href="/sell/login">
                     Sign In
                 </a>
-                <a class="nav-item nav-link " href="/register">
+                <a class="nav-item nav-link " href="/sell/register">
                     Sign Up
                 </a>
             </#if>
