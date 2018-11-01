@@ -95,14 +95,18 @@ public class BuyerCartController {
      *@Time: 0:25
      */
     @PostMapping("/checkout")
-    public  String checkout(Model model, Principal principal) {
+    public  ModelAndView checkout(Model model, Principal principal,Map<String, Object> map) {
         UserInfo user = userService.findOne(principal.getName());// Email as username
         cartService.checkout(user);
+//
+//        model.addAttribute("msg", ResultEnum.CART_CHECKOUT_SUCCESS.getMessage());
+//        model.addAttribute("url", "/sell/buyer/cart/list");
+//        //TODO
+//        return "/common/success";
 
-        model.addAttribute("msg", ResultEnum.CART_CHECKOUT_SUCCESS.getMessage());
-        model.addAttribute("url", "/sell/buyer/order");
-        //TODO
-        return "redirect:"+"/common/success";
+        map.put("msg", ResultEnum.CART_CHECKOUT_SUCCESS.getMessage());
+        map.put("url", "/sell/buyer/order/list");
+        return new ModelAndView("common/success",map);
     }
 
     /**

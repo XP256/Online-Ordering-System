@@ -37,7 +37,7 @@
                 </a>
             </#if>
             <#if currentUser?? >
-                <a class="nav-item nav-link " href="/sell/order">
+                <a class="nav-item nav-link " href="/sell/buyer/order/list">
                     <i class="fa fa-list-ul"></i>
                     Orders
                 </a>

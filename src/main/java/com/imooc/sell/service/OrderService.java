@@ -14,8 +14,11 @@ public interface OrderService {
     //find single order
     OrderDTO findOne(String orderId);
 
-    //find order list, search order lists of a single person
+
+    //find order list, search order lists of a single person by id
     Page<OrderDTO> findList(String buyerOpenid, Pageable pageable);
+
+
 
     //cancel order
     OrderDTO cancel(OrderDTO orderDTO);

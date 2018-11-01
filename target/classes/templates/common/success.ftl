@@ -13,7 +13,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4>
                     Succeed!
-                </h4> <strong>${msg!""}</strong><a href="${url}" class="alert-link">   Auto redirect in 2s!</a>
+                </h4> <strong>${msg!""}</strong><a href="${url}" class="alert-link">   Auto redirect in 1s!</a>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
 </body>
 
 <script>
-    setTimeout('location.href="${url}"', 2000);
+    setTimeout('location.href="${url}"', 1000);
 </script>
 
 </html>
