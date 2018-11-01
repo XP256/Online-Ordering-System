@@ -114,6 +114,7 @@ package com.imooc.sell.controller;
 
 import com.imooc.sell.VO.ResultVO;
 import com.imooc.sell.converter.OrderForm2OrderDTOConverter;
+import com.imooc.sell.dataobject.OrderDetail;
 import com.imooc.sell.dataobject.OrderMaster;
 import com.imooc.sell.dataobject.UserInfo;
 import com.imooc.sell.dto.OrderDTO;
@@ -139,6 +140,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -201,12 +203,12 @@ public class BuyerOrderController {
      *@Time: 15:45
      */
     @GetMapping("/detail")
-    public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
-                                     @RequestParam("orderId") String orderId){
+    public String detail(@RequestParam("orderId") String orderId, Model model, Authentication authentication){
 
-        OrderDTO orderDTO = buyerService.findOrderOne(openid, orderId);
-
-        return ResultVOUtil.success(orderDTO);
+        OrderDTO orderDTO = buyerService.findOrderOne(orderService.findOne(orderId).getBuyerOpenid(), orderId);
+        Collection<OrderDetail> items = orderDTO.getOrderDetailList();
+        model.addAttribute("items", items);
+        return "/Buyer_Order/show";
 
     }
 
