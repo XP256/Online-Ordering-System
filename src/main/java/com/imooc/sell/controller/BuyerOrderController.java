@@ -205,7 +205,14 @@ public class BuyerOrderController {
     @GetMapping("/detail")
     public String detail(@RequestParam("orderId") String orderId, Model model, Authentication authentication){
 
+
         OrderDTO orderDTO = buyerService.findOrderOne(orderService.findOne(orderId).getBuyerOpenid(), orderId);
+
+        UserInfo buyerInfo = userInfoRepository.findByEmail(authentication.getName());
+        if(buyerInfo.getId()!= orderDTO.getBuyerOpenid() && authentication.getAuthorities().contains("ROLE_CUSTOMER") ){
+            return "redirect:" + "/403";
+        }
+
         Collection<OrderDetail> items = orderDTO.getOrderDetailList();
         model.addAttribute("items", items);
         return "/Buyer_Order/show";
@@ -221,14 +228,24 @@ public class BuyerOrderController {
      *@Date: 2018/11/1
      *@Time: 15:45
      */
-    @PostMapping("/cancel")
-    public ResultVO  cancel(@RequestParam("openid") String openid,
-                            @RequestParam("orderId") String orderId) {
+    @GetMapping("/cancel")
+    public String  cancel(@RequestParam("orderId") String orderId,Model model, Authentication authentication) {
+
+        OrderDTO orderDTO = orderService.findOne(orderId);
+
+        UserInfo buyerInfo = userInfoRepository.findByEmail(authentication.getName());
+        if(buyerInfo.getId()!= orderDTO.getBuyerOpenid() && authentication.getAuthorities().contains("ROLE_CUSTOMER") ){
+            return "redirect:" + "/403";
+        }
 
 
-        buyerService.cancelOrder(openid, orderId);
+        buyerService.cancelOrder(orderDTO.getBuyerOpenid(), orderId);
 
-        return ResultVOUtil.success();
+
+
+        model.addAttribute("msg", "Order is cancelled!");
+        model.addAttribute("url", "/sell/buyer/order/list");
+        return "common/success";
     }
 
 
