@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
      *@return: java.util.Collection<com.imooc.sell.dataobject.UserInfo>
      *@Author: XINPENG ZHU
      *@Date: 2018/10/31
-     *@Time: 13:20
+     *@Time: 22:37
      */
     @Override
     public Collection<UserInfo> findByRole(String role) {

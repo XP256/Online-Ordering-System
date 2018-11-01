@@ -1,5 +1,6 @@
 package com.imooc.sell.service;
 
+import com.imooc.sell.dataobject.UserInfo;
 import com.imooc.sell.dto.CartDTO;
 import com.imooc.sell.dto.Item;
 
@@ -13,7 +14,7 @@ public interface CartService {
 
     Collection<Item> findAll();
 
-    //void  checkout(User user);
+    void  checkout(UserInfo user);
 
     BigDecimal getTotal();
 }

@@ -32,6 +32,14 @@ public class BuyerCartController {
     @Autowired
     UserService userService;
 
+    /**
+     *@Description: findAll
+     *@Param: [map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 0:25
+     */
     @GetMapping("/list")
     public ModelAndView findAll(Map<String, Object> map){
         Collection<Item> items = cartService.findAll();
@@ -43,6 +51,14 @@ public class BuyerCartController {
         return new ModelAndView("Buyer_Cart/list",map);
     }
 
+    /**
+     *@Description: addToCart
+     *@Param: [cartDTO, bindingResult, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 0:25
+     */
     @PostMapping("/save")
     public ModelAndView addToCart(@Valid CartDTO cartDTO,
                                   BindingResult bindingResult,
@@ -69,6 +85,15 @@ public class BuyerCartController {
         return new ModelAndView("common/success",map);
     }
 
+
+    /**
+     *@Description: checkout
+     *@Param: [model, principal]
+     *@return: java.lang.String
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 0:25
+     */
     @PostMapping("/checkout")
     public  String checkout(Model model, Principal principal) {
         UserInfo user = userService.findOne(principal.getName());// Email as username
@@ -76,9 +101,18 @@ public class BuyerCartController {
 
         model.addAttribute("msg", ResultEnum.CART_CHECKOUT_SUCCESS.getMessage());
         model.addAttribute("url", "/sell/buyer/order");
-        return "/common/success";
+        //TODO
+        return "redirect:"+"/common/success";
     }
 
+    /**
+    *@Description: remove
+    *@Param: [productId, map]
+    *@return: org.springframework.web.servlet.ModelAndView
+    *@Author: XINPENG ZHU
+    *@Date: 2018/11/1
+    *@Time: 0:25
+    */
     @GetMapping("/remove")
     public ModelAndView remove(@RequestParam("product_id") String productId,
                                Map<String, Object> map) {
@@ -96,6 +130,14 @@ public class BuyerCartController {
         return new ModelAndView("common/success", map);
     }
 
+    /**
+     *@Description: plus
+     *@Param: [poductId, quantity, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 0:26
+     */
     @GetMapping("/change")
     public ModelAndView plus(@RequestParam("product_id") String poductId,
                        @RequestParam("quantity") Integer quantity,

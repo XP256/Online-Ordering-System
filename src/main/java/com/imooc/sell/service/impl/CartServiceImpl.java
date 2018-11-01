@@ -1,13 +1,16 @@
 package com.imooc.sell.service.impl;
 
+import com.imooc.sell.dataobject.OrderDetail;
 import com.imooc.sell.dataobject.ProductInfo;
 import com.imooc.sell.dataobject.UserInfo;
 import com.imooc.sell.dto.CartDTO;
 import com.imooc.sell.dto.Item;
+import com.imooc.sell.dto.OrderDTO;
 import com.imooc.sell.enums.ProductStatusEnum;
 import com.imooc.sell.enums.ResultEnum;
 import com.imooc.sell.exception.SellException;
 import com.imooc.sell.service.CartService;
+import com.imooc.sell.service.OrderService;
 import com.imooc.sell.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -17,9 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 
 @Service
@@ -29,9 +30,20 @@ public class CartServiceImpl implements CartService {
     ProductService productService;
 //    @Autowired
 //    OrderRepository orderRepository;
+    @Autowired
+    OrderService orderService;
 
     private Map<String, Item> map = new LinkedHashMap<>();
 
+
+    /**
+     *@Description: addItem
+     *@Param: [cartDTO]
+     *@return: void
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 0:24
+     */
     @Override
     public void addItem(CartDTO cartDTO) {
         ProductInfo productInfo = productService.findOne(cartDTO.getProductId());
@@ -50,12 +62,28 @@ public class CartServiceImpl implements CartService {
         map.put(cartDTO.getProductId(), new Item(productInfo, cartDTO.getProductQuantity()));
     }
 
+    /**
+     *@Description: removeItem
+     *@Param: [productId]
+     *@return: void
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 0:25
+     */
     @Override
     public void removeItem(String productId) {
         if (!map.containsKey(productId)) throw new SellException(ResultEnum.PRODUCT_NOT_IN_CART);
         map.remove(productId);
     }
 
+    /**
+     *@Description: updateQuantity
+     *@Param: [productId, quantity]
+     *@return: void
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 0:25
+     */
     @Override
     public void updateQuantity(String productId, Integer quantity) {
         if (!map.containsKey(productId)) throw new SellException(ResultEnum.PRODUCT_NOT_IN_CART);
@@ -66,27 +94,79 @@ public class CartServiceImpl implements CartService {
         }
     }
 
+    /**
+     *@Description: findAll
+     *@Param: []
+     *@return: java.util.Collection<com.imooc.sell.dto.Item>
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 0:25
+     */
     @Override
     public Collection<Item> findAll() {
         return map.values();
     }
 
+// @Override
+//    @Transactional
+//    public void checkout(UserInfo user) {
+//        OrderMain orderMain = new OrderMain(user);
+//        for (String productId : map.keySet()) {
+//            Item item = map.get(productId);
+//            ProductInOrder productInOrder = new ProductInOrder(item.getProductInfo(), item.getQuantity());
+//            productInOrder.setOrderMain(orderMain);
+//            orderMain.getProducts().add(productInOrder);
+//            productService.decreaseStock(productId, item.getQuantity());
+//        }
+//        orderMain.setOrderAmount(getTotal());
+//        orderRepository.save(orderMain);
+//        map.clear();
+//    }
+    /**
+     *@Description: checkout
+     *@Param: [user]
+     *@return: void
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 0:25
+     */
     @Override
     @Transactional
     public void checkout(UserInfo user) {
-        OrderMain orderMain = new OrderMain(user);
-        for (String productId : map.keySet()) {
-            Item item = map.get(productId);
-            ProductInOrder productInOrder = new ProductInOrder(item.getProductInfo(), item.getQuantity());
-            productInOrder.setOrderMain(orderMain);
-            orderMain.getProducts().add(productInOrder);
-            productService.decreaseStock(productId, item.getQuantity());
+        Collection<Item> items = findAll();
+
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setBuyerName(user.getName());
+        orderDTO.setBuyerPhone(user.getPhone());
+        orderDTO.setBuyerAddress(user.getAddress());
+        orderDTO.setBuyerOpenid(user.getId());
+        Date date = new Date();
+        orderDTO.setCreateTime(date);
+        List<OrderDetail> orderDetailList = new ArrayList<>();
+        for (Item item : items) {
+            OrderDetail orderDetail = new OrderDetail();
+            orderDetail.setProductId(item.getProductInfo().getProductId());
+            orderDetail.setProductQuantity(item.getProductQuantity());
+            orderDetailList.add(orderDetail);
         }
-        orderMain.setOrderAmount(getTotal());
-        orderRepository.save(orderMain);
+
+
+        orderDTO.setOrderDetailList(orderDetailList);
+
+        orderService.create(orderDTO);
+
         map.clear();
     }
 
+
+    /**
+     *@Description: getTotal
+     *@Param: []
+     *@return: java.math.BigDecimal
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 0:25
+     */
     @Override
     public BigDecimal getTotal() {
         Collection<Item> items = findAll();

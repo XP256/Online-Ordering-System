@@ -147,32 +147,32 @@ public class BuyerOrderController {
     @Autowired
     private BuyerService buyerService;
 
-    //create order
-    @PostMapping("/create")
-    public ResultVO<Map<String,String>> create(@Valid OrderForm orderForm,
-                                               BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
-            log.error("[create order] parameters error, orderForm = {}", orderForm);
-            throw new SellException(ResultEnum.PARAM_ERROR.getCode(),
-                    bindingResult.getFieldError().getDefaultMessage());
-        }
-
-
-        OrderDTO orderDTO = OrderForm2OrderDTOConverter.convert(orderForm);
-        if(CollectionUtils.isEmpty(orderDTO.getOrderDetailList())){
-            log.error("[create order] cart cannot be empty");
-            throw new SellException(ResultEnum.CART_EMPTY);
-        }
-
-        OrderDTO createResult = orderService.create(orderDTO);
-
-        Map<String,String> map = new HashMap<>();
-
-        map.put("orderId",createResult.getOrderId());
-        return ResultVOUtil.success(map);
-
-
-    }
+//    //create order
+//    @PostMapping("/create")
+//    public ResultVO<Map<String,String>> create(@Valid OrderForm orderForm,
+//                                               BindingResult bindingResult) {
+//        if(bindingResult.hasErrors()){
+//            log.error("[create order] parameters error, orderForm = {}", orderForm);
+//            throw new SellException(ResultEnum.PARAM_ERROR.getCode(),
+//                    bindingResult.getFieldError().getDefaultMessage());
+//        }
+//
+//
+//        OrderDTO orderDTO = OrderForm2OrderDTOConverter.convert(orderForm);
+//        if(CollectionUtils.isEmpty(orderDTO.getOrderDetailList())){
+//            log.error("[create order] cart cannot be empty");
+//            throw new SellException(ResultEnum.CART_EMPTY);
+//        }
+//
+//        OrderDTO createResult = orderService.create(orderDTO);
+//
+//        Map<String,String> map = new HashMap<>();
+//
+//        map.put("orderId",createResult.getOrderId());
+//        return ResultVOUtil.success(map);
+//
+//
+//    }
 
     //order list
     @GetMapping("/list")

@@ -19,7 +19,7 @@
                             <th>Name</th>
                             <th>Mobile Number</th>
                             <th>Address</th>
-                            <th>Amount</th>
+                            <th>Total Price</th>
                             <th>Order Status</th>
                             <th>Pay Status</th>
                             <th>Create Time</th>

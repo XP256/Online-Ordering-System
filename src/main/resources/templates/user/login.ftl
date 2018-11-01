@@ -43,20 +43,20 @@
 
 
     <#--Sample Testing-->
-        <strong>Sample Users</strong>
-        <table style="width: 100%;" id="sampleLoginTable">
-            <tr>
-                <td><a
-                        onclick="fillLoginFields('customer1@email.com','123')"
-                        href="javascript:void(0)">customer1</a></td>
-                <td><a
-                        onclick="fillLoginFields('employee1@email.com','123')"
-                        href="javascript:void(0)">employee1</a></td>
-                <td><a
-                        onclick="fillLoginFields('manager1@email.com','123')"
-                        href="javascript:void(0)">manager1</a></td>
-            </tr>
-        </table>
+        <#--<strong>Sample Users</strong>-->
+        <#--<table style="width: 100%;" id="sampleLoginTable">-->
+            <#--<tr>-->
+                <#--<td><a-->
+                        <#--onclick="fillLoginFields('customer1@email.com','123')"-->
+                        <#--href="javascript:void(0)">customer1</a></td>-->
+                <#--<td><a-->
+                        <#--onclick="fillLoginFields('employee1@email.com','123')"-->
+                        <#--href="javascript:void(0)">employee1</a></td>-->
+                <#--<td><a-->
+                        <#--onclick="fillLoginFields('manager1@email.com','123')"-->
+                        <#--href="javascript:void(0)">manager1</a></td>-->
+            <#--</tr>-->
+        <#--</table>-->
 
     </div>
 

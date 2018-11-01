@@ -15,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Data
-@DynamicUpdate
+//@DynamicUpdate
 public class OrderMaster {
 
     @Id
@@ -39,7 +39,7 @@ public class OrderMaster {
 
     private Date createTime;
 
-    private Date updateTime;
+//    private Date updateTime;
 
 
 }

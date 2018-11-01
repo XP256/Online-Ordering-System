@@ -71,7 +71,7 @@ public class UserController {
     @GetMapping("/home")
     public String Handler(Authentication authentication) {
         if (authentication == null || authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_CUSTOMER"))) {
-            System.out.println(authentication.getName());
+            //System.out.println(authentication.getName());
             return "forward:" + "/buyer/product/list";
         } else {
             return "forward:" + "/seller/order/list";
