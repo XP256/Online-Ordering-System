@@ -2,14 +2,12 @@
 ECE651
 XINPENG ZHU
 
-Description
+## Description
 
 ## How to run
 
-Steps
-
 ## About
  
-**Optimise**
+## Optimise
 
 ## Still on process...
