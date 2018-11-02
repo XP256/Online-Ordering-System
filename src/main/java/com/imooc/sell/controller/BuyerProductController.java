@@ -139,11 +139,12 @@ public class BuyerProductController {
     private CategoryService categoryService;
 
     /**
-     *
-     * @param page
-     * @param size
-     * @param map
-     * @return
+     *@Description: list
+     *@Param: [page, size, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:28
      */
     @GetMapping("/list")
     public ModelAndView list(@RequestParam(value = "page", defaultValue = "1") Integer page,
@@ -160,6 +161,14 @@ public class BuyerProductController {
     }
 
 
+    /**
+     *@Description: showOne
+     *@Param: [productId, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:28
+     */
     @GetMapping("/productInfo")
     public ModelAndView showOne(@RequestParam("productId") String productId,
                           Map<String, Object> map) {
@@ -181,6 +190,14 @@ public class BuyerProductController {
     }
 
 
+    /**
+     *@Description: showOneCategory
+     *@Param: [categoryType, page, size, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:28
+     */
     @GetMapping("/category/{type}")
     public ModelAndView showOneCategory(@PathVariable("type") Integer categoryType,
                                 @RequestParam(value = "page", defaultValue = "1") Integer page,

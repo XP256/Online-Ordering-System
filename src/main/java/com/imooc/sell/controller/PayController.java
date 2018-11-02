@@ -26,14 +26,15 @@ public class PayController {
     private PayService payService;
 
 
-    /**
-     *
-     * @param orderId
-     * @param returnUrl
-     * @param map
-     * @return
-     */
 
+    /**
+     *@Description: create
+     *@Param: [orderId, returnUrl, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:28
+     */
     @GetMapping("/create")
     public ModelAndView create(@RequestParam("orderId") String orderId,
                                @RequestParam("returnUrl") String returnUrl,
@@ -55,9 +56,12 @@ public class PayController {
 
 
     /**
-     *
-     * @param notifyData
-     * @return
+     *@Description: notify
+     *@Param: [notifyData]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:29
      */
     @PostMapping("/notify")
     public ModelAndView notify(@RequestBody String notifyData) {

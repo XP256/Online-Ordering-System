@@ -33,12 +33,14 @@ public class SellerOrderController {
     //page 第几页，从第一页开始
     //size 一页有多少条数据
 
+
     /**
-     *
-     * @param page
-     * @param size
-     * @param map
-     * @return
+     *@Description: list
+     *@Param: [page, size, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:29
      */
     @GetMapping("/list")
     public ModelAndView list(@RequestParam(value = "page",defaultValue = "1") Integer page,
@@ -52,11 +54,14 @@ public class SellerOrderController {
         return new ModelAndView("order/list",map);
     }
 
+
     /**
-     *
-     * @param orderId
-     * @param map
-     * @return
+     *@Description: cancel
+     *@Param: [orderId, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:29
      */
     @GetMapping("/cancel")
     public ModelAndView cancel(@RequestParam("orderId") String orderId,
@@ -76,11 +81,14 @@ public class SellerOrderController {
         return new ModelAndView("common/success");
     }
 
+
     /**
-     *
-     * @param orderId
-     * @param map
-     * @return
+     *@Description: detail
+     *@Param: [orderId, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:29
      */
     @GetMapping("/detail")
     public ModelAndView detail(@RequestParam("orderId") String orderId,
@@ -102,11 +110,14 @@ public class SellerOrderController {
 
     }
 
+
     /**
-     *
-     * @param orderId
-     * @param map
-     * @return
+     *@Description: finished
+     *@Param: [orderId, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:30
      */
     @GetMapping("/finish")
     public ModelAndView finished(@RequestParam("orderId") String orderId,

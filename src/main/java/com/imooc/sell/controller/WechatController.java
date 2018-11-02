@@ -36,10 +36,14 @@ public class WechatController {
 
     //从外部访问/authorize，构造网页授权url，跳转并同意授权后会再跳转到redirect_uri/?code=CODE&state=STATE,即获取了code
 
+
     /**
-     *
-     * @param returnUrl
-     * @return
+     *@Description: authorize
+     *@Param: [returnUrl]
+     *@return: java.lang.String
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:30
      */
     @GetMapping("/authorize")
     public String authorize(@RequestParam("returnUrl") String returnUrl) {
@@ -62,11 +66,14 @@ public class WechatController {
 
     //同意授权后跳转至redirect_uri/?code=CODE&state=STATE即/userInfo方法，已得到code，换取access_token,openid
 
+
     /**
-     *
-     * @param code
-     * @param returnUrl
-     * @return
+     *@Description: userInfo
+     *@Param: [code, returnUrl]
+     *@return: java.lang.String
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:30
      */
     @GetMapping("/userInfo")
     public String userInfo(@RequestParam("code") String code,
@@ -96,10 +103,14 @@ public class WechatController {
     }
 
 
+
     /**
-     *
-     * @param returnUrl
-     * @return
+     *@Description: qrAuthorize
+     *@Param: [returnUrl]
+     *@return: java.lang.String
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:30
      */
     @GetMapping("/qrAuthorize")
     public String qrAuthorize(@RequestParam("returnUrl") String returnUrl) {
@@ -112,11 +123,14 @@ public class WechatController {
     }
 
 
+
     /**
-     *
-     * @param code
-     * @param returnUrl
-     * @return
+     *@Description: qrUserInfo
+     *@Param: [code, returnUrl]
+     *@return: java.lang.String
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:31
      */
     @GetMapping("/qrUserInfo")
     public String qrUserInfo(@RequestParam("code") String code,

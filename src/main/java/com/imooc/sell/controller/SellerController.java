@@ -39,12 +39,14 @@ public class SellerController {
     @Autowired
     private ProjectUrlConfig projectUrlConfig;
 
+
     /**
-     *
-     * @param openid
-     * @param response
-     * @param map
-     * @return
+     *@Description: login
+     *@Param: [openid, response, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:29
      */
     @GetMapping("/login")
     public ModelAndView login(@RequestParam("openid") String openid,
@@ -72,12 +74,14 @@ public class SellerController {
 
     }
 
+
     /**
-     *
-     * @param request
-     * @param response
-     * @param map
-     * @return
+     *@Description: logout
+     *@Param: [request, response, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:29
      */
     @GetMapping("/logout")
     public ModelAndView logout(HttpServletRequest request,

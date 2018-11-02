@@ -43,12 +43,14 @@ public class SellerProductController {
     @Autowired
     private CategoryService categoryService;
 
+
     /**
-     *
-     * @param page
-     * @param size
-     * @param map
-     * @return
+     *@Description: list
+     *@Param: [page, size, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:30
      */
     @GetMapping("/list")
     public ModelAndView list(@RequestParam(value = "page",defaultValue = "1") Integer page,
@@ -63,11 +65,14 @@ public class SellerProductController {
     }
 
 
+
     /**
-     *
-     * @param productId
-     * @param map
-     * @return
+     *@Description: onSale
+     *@Param: [productId, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:30
      */
     @RequestMapping("/on_sale")
     public ModelAndView onSale(@RequestParam("productId") String productId,
@@ -85,11 +90,14 @@ public class SellerProductController {
     }
 
 
+
     /**
-     *
-     * @param productId
-     * @param map
-     * @return
+     *@Description: offSale
+     *@Param: [productId, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:30
      */
     @RequestMapping("/off_sale")
     public ModelAndView offSale(@RequestParam("productId") String productId,
@@ -110,11 +118,14 @@ public class SellerProductController {
     }
 
 
+
     /**
-     *
-     * @param productId
-     * @param map
-     * @return
+     *@Description: index
+     *@Param: [productId, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:30
      */
     @GetMapping("/index")
     public ModelAndView index(@RequestParam(value = "productId",required = false) String productId,
@@ -132,12 +143,14 @@ public class SellerProductController {
     }
 
 
+
     /**
-     *
-     * @param form
-     * @param bindingResult
-     * @param map
-     * @return
+     *@Description: save
+     *@Param: [form, bindingResult, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:30
      */
     @PostMapping("/save")
 //    @CachePut(cacheNames = "product" , key ="123")

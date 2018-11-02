@@ -64,6 +64,14 @@ public class OrderServiceImpl implements OrderService {
 
 
 
+    /**
+     *@Description: create
+     *@Param: [orderDTO]
+     *@return: com.imooc.sell.dto.OrderDTO
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:31
+     */
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
@@ -133,6 +141,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
+
+    /**
+     *@Description: findOne
+     *@Param: [orderId]
+     *@return: com.imooc.sell.dto.OrderDTO
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
+     */
     @Override
     public OrderDTO findOne(String orderId) {
 
@@ -156,6 +173,14 @@ public class OrderServiceImpl implements OrderService {
 
 
 
+    /**
+     *@Description: findList
+     *@Param: [buyerOpenid, pageable]
+     *@return: org.springframework.data.domain.Page<com.imooc.sell.dto.OrderDTO>
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
+     */
     @Override
     public Page<OrderDTO> findList(String buyerOpenid, Pageable pageable) {
 
@@ -168,6 +193,15 @@ public class OrderServiceImpl implements OrderService {
         return orderDTOPage;
     }
 
+
+    /**
+     *@Description: cancel
+     *@Param: [orderDTO]
+     *@return: com.imooc.sell.dto.OrderDTO
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
+     */
     @Override
     @Transactional
     public OrderDTO cancel(OrderDTO orderDTO) {
@@ -212,6 +246,15 @@ public class OrderServiceImpl implements OrderService {
         return orderDTO;
     }
 
+
+    /**
+     *@Description: finish
+     *@Param: [orderDTO]
+     *@return: com.imooc.sell.dto.OrderDTO
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
+     */
     @Override
     @Transactional
     public OrderDTO finish(OrderDTO orderDTO) {
@@ -236,6 +279,15 @@ public class OrderServiceImpl implements OrderService {
         return orderDTO;
     }
 
+
+    /**
+     *@Description: paid
+     *@Param: [orderDTO]
+     *@return: com.imooc.sell.dto.OrderDTO
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
+     */
     @Override
     @Transactional
     public OrderDTO paid(OrderDTO orderDTO) {
@@ -268,6 +320,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
+    /**
+     *@Description: findList
+     *@Param: [pageable]
+     *@return: org.springframework.data.domain.Page<com.imooc.sell.dto.OrderDTO>
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
+     */
     @Override
     public Page<OrderDTO> findList(Pageable pageable) {
         Page<OrderMaster> orderMasterPage = orderMasterRepository.findAll(pageable);

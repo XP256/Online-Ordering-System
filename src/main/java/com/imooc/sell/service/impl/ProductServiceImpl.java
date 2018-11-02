@@ -25,33 +25,81 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductInfoRepository repository;
 
+    /**
+     *@Description: findOne
+     *@Param: [productId]
+     *@return: com.imooc.sell.dataobject.ProductInfo
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
+     */
     @Override
 //    @Cacheable(cacheNames = "product",key="123")
     public ProductInfo findOne(String productId) {
         return repository.findById(productId).orElse(null);
     }
 
+    /**
+     *@Description: findUpAll
+     *@Param: []
+     *@return: java.util.List<com.imooc.sell.dataobject.ProductInfo>
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
+     */
     @Override
     public List<ProductInfo> findUpAll() {
         return repository.findByProductStatus(ProductStatusEnum.UP.getCode());
     }
 
+    /**
+     *@Description: findAll
+     *@Param: [pageable]
+     *@return: org.springframework.data.domain.Page<com.imooc.sell.dataobject.ProductInfo>
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
+     */
     @Override
     public Page<ProductInfo> findAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
+    /**
+     *@Description: findAllInCategory
+     *@Param: [categoryType, pageable]
+     *@return: org.springframework.data.domain.Page<com.imooc.sell.dataobject.ProductInfo>
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:33
+     */
     @Override
     public Page<ProductInfo> findAllInCategory(Integer categoryType, Pageable pageable) {
         return repository.findAllByCategoryTypeOrderByProductIdAsc(categoryType, pageable);
     }
 
+    /**
+     *@Description: save
+     *@Param: [productInfo]
+     *@return: com.imooc.sell.dataobject.ProductInfo
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:33
+     */
     @Override
 //    @CachePut(cacheNames = "product",key="123")
     public ProductInfo save(ProductInfo productInfo) {
         return repository.save(productInfo);
     }
 
+    /**
+     *@Description: increaseStock
+     *@Param: [cartDTOList]
+     *@return: void
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:33
+     */
     @Override
     @Transactional
     public void increaseStock(List<CartDTO> cartDTOList) {
@@ -70,6 +118,14 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
+    /**
+     *@Description: decreaseStock
+     *@Param: [cartDTOList]
+     *@return: void
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:33
+     */
     @Override
     @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
@@ -92,6 +148,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+    /**
+     *@Description: onSale
+     *@Param: [productId]
+     *@return: com.imooc.sell.dataobject.ProductInfo
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:33
+     */
     @Override
     public ProductInfo onSale(String productId) {
         ProductInfo  productInfo =  repository.findById(productId).orElse(null);
@@ -107,6 +171,14 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
+    /**
+     *@Description: offSale
+     *@Param: [productId]
+     *@return: com.imooc.sell.dataobject.ProductInfo
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:33
+     */
     @Override
     public ProductInfo offSale(String productId) {
         ProductInfo  productInfo =  repository.findById(productId).orElse(null);

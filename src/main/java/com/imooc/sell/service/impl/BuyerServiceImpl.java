@@ -24,6 +24,14 @@ public class BuyerServiceImpl implements BuyerService {
 
     }
 
+    /**
+     *@Description: cancelOrder
+     *@Param: [openid, orderId]
+     *@return: com.imooc.sell.dto.OrderDTO
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:31
+     */
     @Override
     public OrderDTO cancelOrder(String openid, String orderId) {
 
@@ -37,6 +45,14 @@ public class BuyerServiceImpl implements BuyerService {
     }
 
 
+    /**
+     *@Description: checkOrderOwner
+     *@Param: [openid, orderId]
+     *@return: com.imooc.sell.dto.OrderDTO
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:31
+     */
     private OrderDTO checkOrderOwner(String openid, String orderId){
         OrderDTO orderDTO = orderService.findOne(orderId);
         if(orderDTO == null){

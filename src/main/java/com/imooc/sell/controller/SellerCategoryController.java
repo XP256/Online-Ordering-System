@@ -31,9 +31,12 @@ public class SellerCategoryController {
 
 
     /**
-     *
-     * @param map
-     * @return
+     *@Description: list
+     *@Param: [map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:29
      */
     @GetMapping("/list")
     public ModelAndView list(Map<String,Object> map) {
@@ -43,11 +46,14 @@ public class SellerCategoryController {
     }
 
 
+
     /**
-     *
-     * @param categoryId
-     * @param map
-     * @return
+     *@Description: index
+     *@Param: [categoryId, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:29
      */
     @GetMapping("/index")
     public ModelAndView index(@RequestParam(value = "categoryId", required = false) Integer categoryId,
@@ -61,12 +67,14 @@ public class SellerCategoryController {
     }
 
 
+
     /**
-     *
-     * @param form
-     * @param bindingResult
-     * @param map
-     * @return
+     *@Description: save
+     *@Param: [form, bindingResult, map]
+     *@return: org.springframework.web.servlet.ModelAndView
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:29
      */
     @PostMapping("/save")
     public ModelAndView save(@Valid CategoryForm form,

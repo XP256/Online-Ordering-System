@@ -36,9 +36,12 @@ public class PayServiceImpl implements PayService {
 
 
     /**
-     *
-     * @param orderDTO
-     * @return
+     *@Description: create
+     *@Param: [orderDTO]
+     *@return: com.lly835.bestpay.model.PayResponse
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
      */
     @Override
     public PayResponse create(OrderDTO orderDTO) {
@@ -58,10 +61,14 @@ public class PayServiceImpl implements PayService {
     }
 
 
+
     /**
-     *
-     * @param notifyData
-     * @return
+     *@Description: notify
+     *@Param: [notifyData]
+     *@return: com.lly835.bestpay.model.PayResponse
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
      */
     @Override
     public PayResponse notify(String notifyData) {
@@ -99,10 +106,14 @@ public class PayServiceImpl implements PayService {
     }
 
 
+
     /**
-     *
-     * @param orderDTO
-     * @return
+     *@Description: refund
+     *@Param: [orderDTO]
+     *@return: com.lly835.bestpay.model.RefundResponse
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:32
      */
     @Override
     public RefundResponse refund(OrderDTO orderDTO) {

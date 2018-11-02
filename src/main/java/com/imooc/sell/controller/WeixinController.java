@@ -14,9 +14,14 @@ import org.springframework.web.client.RestTemplate;
 public class WeixinController {
 
 
+
     /**
-     *
-     * @param code
+     *@Description: auth
+     *@Param: [code]
+     *@return: void
+     *@Author: XINPENG ZHU
+     *@Date: 2018/11/1
+     *@Time: 22:31
      */
     @GetMapping("/auth")
     public void auth(@RequestParam("code") String code) {
