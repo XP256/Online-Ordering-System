@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Online-Shopping-Store
 A web application for online shopping with Spring Boot, FreeMarker &amp; Hibernate
 
@@ -25,3 +26,8 @@ The demo is deployed on [Heroku](https://www.heroku.com/), using PostgreSQL as d
 2. Distributed Lock with Redis for concurrency  
   
 ## Still on process...
+=======
+# Online-Ordering-System
+ECE 651  
+XINPENG ZHU
+>>>>>>> 25184cfa3d9760cc1faf6e2944debe3a2e650867
