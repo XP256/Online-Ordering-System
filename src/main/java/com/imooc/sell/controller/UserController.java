@@ -68,7 +68,7 @@ public class UserController {
      *@Date: 2018/10/31
      *@Time: 13:15
      */
-    @GetMapping("/home")
+    @GetMapping("/")
     public String Handler(Authentication authentication) {
         if (authentication == null || authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_CUSTOMER"))) {
             //System.out.println(authentication.getName());
