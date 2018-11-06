@@ -5,7 +5,7 @@ import com.imooc.sell.dataobject.UserInfo;
 import com.imooc.sell.repository.UserInfoRepository;
 import com.imooc.sell.service.UserService;
 import com.imooc.sell.utils.KeyUtil;
-import com.sun.org.apache.xml.internal.security.keys.KeyUtils;
+//import com.sun.org.apache.xml.internal.security.keys.KeyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
