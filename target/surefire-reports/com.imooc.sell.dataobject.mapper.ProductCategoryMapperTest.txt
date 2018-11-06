@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.imooc.sell.dataobject.mapper.ProductCategoryMapperTest
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.54 s - in com.imooc.sell.dataobject.mapper.ProductCategoryMapperTest
