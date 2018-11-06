@@ -53,7 +53,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests().antMatchers("/home","/register","/buyer/product/**","/buyer/cart/list","/buyer/cart/save","/buyer/cart/remove","/buyer/cart/change","/css/**", "/js/**", "/fonts/**", "/index").permitAll() // 都可以访问
+                .authorizeRequests().antMatchers("/","/register","/buyer/product/**","/buyer/cart/list","/buyer/cart/save","/buyer/cart/remove","/buyer/cart/change","/css/**", "/js/**", "/fonts/**", "/index").permitAll() // 都可以访问
 
 //                .antMatchers("/order/finish/**").access("hasAnyRole('EMPLOYEE', 'MANAGER')")
 //                .antMatchers("/seller/product/new").access("hasAnyRole('MANAGER')")
@@ -71,7 +71,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/home")
+                .defaultSuccessUrl("/")
                 .loginProcessingUrl("/login") // Submit URL
                 .failureUrl("/login?error")//
                 .usernameParameter("email")//

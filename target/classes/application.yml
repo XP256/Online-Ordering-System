@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1/sell?characterEncoding=utf-8&useSSL=false
-    username: root
-    password: zxp1995
+    url: jdbc:mysql://l7cup2om0gngra77.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dt91eugnpw6vzqq9?characterEncoding=utf-8&useSSL=false
+    username: npg5pb76903teu8b
+    password: h3e3mb4bpgobtt9m
   jpa:
     show-sql: true
     hibernate:
