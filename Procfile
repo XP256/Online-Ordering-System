@@ -1,1 +1,1 @@
-web java -Dserver.port=$PORT $JAVA_OPTS -jar target/sell.jar
+web: java  -jar target/sell.jar
