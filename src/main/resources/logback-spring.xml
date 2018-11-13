@@ -26,7 +26,7 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--path-->
             <fileNamePattern>
-                /var/log/tomcat7/sell/info.%d.log
+                /tmp/log/tomcat7/sell/info.%d.log
             </fileNamePattern>
         </rollingPolicy>
     </appender>
@@ -44,7 +44,7 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--path-->
             <fileNamePattern>
-                /var/log/tomcat7/sell/error.%d.log
+                /tmp/log/tomcat7/sell/error.%d.log
             </fileNamePattern>
         </rollingPolicy>
     </appender>
