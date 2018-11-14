@@ -1,9 +1,14 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://nuskkyrsgmn5rw8c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/fegg4i5o0ylclgsz?characterEncoding=utf-8&useSSL=false
-    username: jcp9cwb2vn7q0kq2
-    password: e7tv4vvlicriuihb
+    url: jdbc:mysql://127.0.0.1:3306/sell?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: zxp1995
+
+#    url: jdbc:mysql://nuskkyrsgmn5rw8c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/fegg4i5o0ylclgsz?characterEncoding=utf-8&useSSL=false
+#    username: jcp9cwb2vn7q0kq2
+#    password: e7tv4vvlicriuihb
+
     test-while-idle: true
     test-on-borrow: false
     test-on-return: false
