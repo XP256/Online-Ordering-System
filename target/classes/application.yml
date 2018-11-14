@@ -1,9 +1,17 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://l7cup2om0gngra77.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dt91eugnpw6vzqq9?characterEncoding=utf-8&useSSL=false
-    username: npg5pb76903teu8b
-    password: h3e3mb4bpgobtt9m
+    url: jdbc:mysql://nuskkyrsgmn5rw8c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/fegg4i5o0ylclgsz?characterEncoding=utf-8&useSSL=false
+    username: jcp9cwb2vn7q0kq2
+    password: e7tv4vvlicriuihb
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    time-between-eviction-runs-millis: 300000
+    min-evictable-idle-time-millis: 1800000
+    max-active: 10
+    max-wait: 60000
+
   jpa:
     show-sql: true
     hibernate:
