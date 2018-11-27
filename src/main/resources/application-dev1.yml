@@ -1,0 +1,60 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/sell?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: zxp1995
+
+    #    url: jdbc:mysql://nuskkyrsgmn5rw8c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/fegg4i5o0ylclgsz?characterEncoding=utf-8&useSSL=false
+    #    username: jcp9cwb2vn7q0kq2
+    #    password: e7tv4vvlicriuihb
+
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    time-between-eviction-runs-millis: 300000
+    min-evictable-idle-time-millis: 1800000
+    max-active: 10
+    max-wait: 60000
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  jackson:
+    default-property-inclusion: non_null
+#  redis:
+#    host: 192.168.2.157
+#    port: 6379
+server:
+  servlet:
+    context-path: /sell
+  port: 8080
+
+
+wechat:
+  mpAppId: wx8135a8cde0d04fda
+  mpAppSecret: 23530a5305c2774286cfd5cf081b93de
+#  mchId: 1409146202
+#  mchKey: c976503d34ca432c601361f969fd8d85
+#  keyPath: /var/weixin_cert/h5.p12
+#  notifyUrl: http://sellxp.mynatapp.cc/sell/pay/notify
+
+
+project-url-config:
+  wechatMpAuthorize: http://sellxp.mynatapp.cc
+  wechatOpenAuthorize: http://sellxp.mynatapp.cc
+  sell: http://sellxp.mynatapp.cc
+
+
+logging:
+  level:
+    com.imooc.sell.dataobject.mapper: trace
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+
+queries:
+  users-query: select email, password, active from user_info where email=?
+  roles-query: select email, role from user_info where email=?
